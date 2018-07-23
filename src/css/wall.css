@@ -84,7 +84,7 @@
   .static {
     position: static;
   }
-  .unshow{
+  .unshow {
     display: none;
   }
   textarea {
@@ -96,7 +96,7 @@
   #header {
     min-height: 50px;
   }
-  .navbar-default .navbar-toggle .icon-bar{
+  .navbar-default .navbar-toggle .icon-bar {
     background: #fff;
   }
   .menu {
@@ -179,7 +179,7 @@
   .navbar-brand .logo {
     height: 48px;
   }
-  .slide-bar-left{
+  .slide-bar-left {
     display: none;
   }
   .profile-card {
@@ -286,20 +286,28 @@
   .create-post .tools ul.publishing-tools li a:hover {
     color: #27aae1;
   }
-  .contenidoPost{
+  .contenidoPost {
     margin: 25px 2px;
   }
-  .post-icon{
+  .post-icon {
     /* display: none; */
     margin: 10px;
     cursor: pointer;
   }
-  .post-published{
+  .post-published {
     margin: 40px 0;
   }
-  .tools-published{
+  .tools-published {
     display: none;
     margin: 10px 0;
+  }
+  .user-name-container{
+    display: inline-block;
+  }
+  .privacity {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 
@@ -310,11 +318,11 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .slide-bar-left{
+  .slide-bar-left {
     display: block;
     position: fixed;
   }
-  .wall{
+  .wall {
     margin-left: 300px;
   }
   .col-md-3 {
@@ -323,6 +331,7 @@
 }
 
 /* Estilos para los posts */
-#newPost{
+
+#newPost {
   border: 1px solid;
 }

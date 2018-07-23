@@ -155,16 +155,35 @@ const createPost = (postId, keys, userId) => {
   userName.textContent = keys.val().userName;
   boxPost.textContent = keys.val().body;
 
+  //NEWWWWW
+  userNameContainer.setAttribute('class', 'user-name-container');
+
+  let selectPrivacity = document.createElement('select');
+  selectPrivacity.setAttribute('class', 'privacity');
+  let optionPrivate = document.createElement('option');
+  let optionPublish = document.createElement('option');
+
+  optionPublish.textContent = 'Publish';
+  optionPrivate.textContent = 'Private';
+
+
+
+
   toolsPublishContainer.appendChild(iconEdit);
   toolsPublishContainer.appendChild(iconDelete);
   toolsPublishContainer.appendChild(iconLike);
   toolsPublishContainer.appendChild(likesContainer);
   toolsPublishContainer.appendChild(buttonUpdate);
-
   userNameContainer.appendChild(userName);
-
-
   postPublished.appendChild(userNameContainer);
+
+  //NEWWWWW start
+  selectPrivacity.appendChild(optionPrivate)
+  selectPrivacity.appendChild(optionPublish)
+  postPublished.appendChild(selectPrivacity)
+  //NEWWWWW end
+
+
   postPublished.appendChild(boxPost);
   postPublished.appendChild(toolsPublishContainer);
 
@@ -173,6 +192,7 @@ const createPost = (postId, keys, userId) => {
   let editClick = document.getElementById('update' + postId);
   let postDisable = document.getElementById(postId);
   let showButton = document.getElementById('bU' + postId);
+
   editClick.addEventListener('click', () => {
     postDisable.disabled = false;
     showButton.style.display = 'block';
@@ -196,4 +216,7 @@ const createPost = (postId, keys, userId) => {
     firebase.database().ref().update(updatesUser);
     firebase.database().ref().update(updatesPost);
   });
+
+
+
 }
