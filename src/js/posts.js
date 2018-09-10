@@ -5,7 +5,7 @@ const posts = document.querySelector('#posts');
 const writingPost = document.querySelector('#publicPost');
 const selectOption = document.querySelector('#select-option');
 const writePost = document.querySelector('#write-post');
-const videoPost = document.querySelector('#video-post');
+// const videoPost = document.querySelector('#video-post');
 const imagePost = document.querySelector('#image-post');
 const uploadImage = document.querySelector('#upload-image');
 const uploadingImage = document.querySelector('#uploading-image');
@@ -66,15 +66,15 @@ firebase.auth().onAuthStateChanged(function (user) {
 
       uploadPostWithImage();
     })
-    videoPost.addEventListener('click', () => {
-      uploadImage.style.display = 'block';
-      uploadImage.setAttribute('activated', 'activated')
-      selectOption.style.display = 'none';
-      postEntry.style.display = 'inline-flex';
-      setFile.setAttribute('accept', 'video/*');
+    // videoPost.addEventListener('click', () => {
+    //   uploadImage.style.display = 'block';
+    //   uploadImage.setAttribute('activated', 'activated')
+    //   selectOption.style.display = 'none';
+    //   postEntry.style.display = 'inline-flex';
+    //   setFile.setAttribute('accept', 'video/*');
 
-      uploadPostWithImage();
-    })
+    //   uploadPostWithImage();
+    // })
 
     //   document.querySelector('.create-post').style.display = 'block';
     //   document.querySelector('.profile-card').style.display = 'block';
