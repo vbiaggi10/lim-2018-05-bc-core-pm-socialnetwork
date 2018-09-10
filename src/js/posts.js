@@ -44,6 +44,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       document.querySelector('#user-profile').style.display = 'none';
       const dbRefPost = firebase.database().ref().child('posts');
       dbRefPost.once('value', postKey => {
+        // console.log(postKey)
         paintPost(postKey);
       })
     }
@@ -79,7 +80,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     //   document.querySelector('.profile-card').style.display = 'block';
     if (user) {
       if (user.displayName === null) {
-        userProfile(user.photoURL, user.email)
+        userProfile('img/user.png', user.email)
       } else {
         userProfile(user.photoURL, user.displayName)
       }
@@ -87,6 +88,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       const dbRefPost = firebase.database().ref().child('posts');
       // const dbRefPost = firebase.database().ref().child('user-posts').child(userId);
       dbRefPost.once('value', postKey => {
+        // console.log(postKey)
         paintPost(postKey, userId);
       })
     }
@@ -94,7 +96,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 const settingImage = () => {
   setFile.addEventListener('change', function (e) {
-    console.log(e.target.files)
+    // console.log(e.target.files)
     // alert('Wait a minute please')
     var file = e.target.files[0];
     var storageRef = firebase.storage().ref('post-images/' + file.name);
@@ -111,7 +113,7 @@ const settingImage = () => {
           fileName = file.name;
           fileUrl = downloadURL;
           publishPost(fileName, fileUrl);
-          console.log('File available at', downloadURL);
+          // console.log('File available at', downloadURL);
           alert('Now you can publish')
         });
       }
@@ -285,7 +287,7 @@ const createPost = (postId, keys, userId) => {
       likeClick.style.color = "#6d6e71";
       likeClick.disabled = false;
       let contador_click = document.querySelector('#post' + postId + ' .count_click_likes').innerHTML;
-      console.log(contador_click);
+      // console.log(contador_click);
       contador_click === "undefined" ? contador_click = 0 : "";
       contador_click = parseInt(contador_click, 10) - 1;
       document.querySelector('#post' + postId + ' .count_click_likes').innerHTML = contador_click;
@@ -306,7 +308,9 @@ const createPost = (postId, keys, userId) => {
 
   deleteClick.addEventListener('click', () => {
     if (confirm('Are you sure if you want to delete this post') === true) {
-      deletePost(postId, userId);
+      firebase.database().ref().child('posts').child(postId).remove();
+      firebase.database().ref().child('user-posts').child(userId).child(postId).remove();
+      while (posts.firstChild) posts.removeChild(posts.firstChild);
       firebase.database().ref().child('posts').on('value', postKey => {
         paintPost(postKey, userId);
       })

@@ -17,7 +17,7 @@ window.onload = () => {
       // var isAnonymous = user.isAnonymous;
       // var uid = user.uid;
     } else {
-      console.log('No user is signed in.');
+      // console.log('No user is signed in.');
 
     }
   });
@@ -33,21 +33,54 @@ logIn.addEventListener('click', () => {
 })
 
 forgotPassword.addEventListener('click', () => {
-  resetPassword(getEmail.value, getPassword.value)
+  resetPassword(getEmail.value)
 })
 
 loginGoogle.addEventListener('click', () => {
-  loginWithGoogle();
+  const callback = (error, Response) => {
+    if (!error) {
+      window.location.assign('wall.html');
+    } else {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    }
+  }
+  loginWithGoogle(callback);
 });
 
 loginFacebook.addEventListener('click', () => {
-  loginWithFacebook();
+  const callback = (error, Response) => {
+    if (!error) {
+      window.location.assign('wall.html');
+    } else {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    }
+  }
+  loginWithFacebook(callback);
 });
 
 loginTwitter.addEventListener('click', () => {
-  loginWithTwitter();
+  const callback = (error, Response) => {
+    if (!error) {
+      window.location.assign('wall.html');
+    } else {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    }
+  }
+  loginWithTwitter(callback);
 });
 
 loginAnonymous.addEventListener('click', () => {
-  loginWithAnonymous();
+  const callback = (error, Response) => {
+    if (!error) {
+      window.location.assign('wall.html');
+    } else {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    }
+  }
+  loginWithAnonymous(callback);
 })
+
